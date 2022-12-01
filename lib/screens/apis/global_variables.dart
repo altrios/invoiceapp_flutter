@@ -12,6 +12,10 @@ String loggedUserLastName = '';
 String loggedUserEmail = '';
 int loggedUserPhone = 0;
 var Invoices;
+var InvoiceID;
+var InvoiceDAta;
+var InvoiceCompData;
+var UserId;
 
 dynamic globalCountries = [
   {"id": "1", "Codigo": "AU", "Pais": "Australia"},

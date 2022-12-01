@@ -43,6 +43,12 @@ dependencies:
   dropdown_button2: ^1.6.3
   jwt_decode: ^0.3.1
   intl: ^0.17.0
+  pdf: ^3.8.2
+  printing: ^5.9.2
+  syncfusion_flutter_pdf: ^20.2.50
+  open_file: ^2.1.1
+  path_provider: ^2.0.11
+  flutter_html: ^0.11.1
  
 
 dev_dependencies:
@@ -72,6 +78,7 @@ flutter:
   # - images/a_dot_burr.jpeg
    - lib/assets/loading.png
    - lib/assets/descarga.png
+   - lib/assets/descarga.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

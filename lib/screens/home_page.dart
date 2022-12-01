@@ -4,6 +4,7 @@ import 'package:apptest/login_page.dart';
 import 'package:apptest/screens/apis/getinvoices.dart';
 import 'package:apptest/screens/apis/validate_token.dart';
 import 'package:apptest/screens/homeContent/companyArea/invoice_list.dart';
+import 'package:apptest/screens/homeContent/companyArea/show_invoice.dart';
 
 import 'package:apptest/screens/homeContent/usersArea/userSetting.dart';
 import 'package:flutter/material.dart';
@@ -179,12 +180,16 @@ class _CallingContentState extends State<CallingContent> {
       return Container(
         child: const UserSetting(),
       );
-    } else {
-      var invoiceList = [];
-
+    }
+    if (caller == '3' && InvoiceID != null) {
       return Container(
-        child: Invoice_list(),
+        child: Show_invoice(),
       );
     }
+    var invoiceList = [];
+
+    return Container(
+      child: Invoice_list(),
+    );
   }
 }

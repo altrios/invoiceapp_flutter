@@ -37,6 +37,7 @@ postData(emailController, String passController) async {
     await prefs.setInt('userStatedata', userMap['data'][0]['id_user_state']);
     await prefs.setInt('userTypedata', userMap['data'][0]['user_type']);
     await prefs.setString('userEmaildata', userMap['data'][0]['email']);
+    UserId = userMap['data'][0]['email'];
   }
 
   return response.statusCode;

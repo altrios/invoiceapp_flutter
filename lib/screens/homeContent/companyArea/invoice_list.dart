@@ -3,6 +3,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:apptest/screens/homeContent/companyArea/show_invoice.dart';
+import 'package:apptest/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -52,7 +54,16 @@ class _Invoice_listState extends State<Invoice_list> {
                   child: Ink(
                     width: double.infinity,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        setState(() {
+                          caller = '3';
+                          InvoiceID = item['id_invoice_request'];
+                          InvoiceDAta = item['invoice_data'];
+                          InvoiceCompData = item['id_company'];
+                          // isLoading = false;
+                        });
+                        _shoInvoice(context, item['id_invoice_request']);
+                      },
                       child: Center(
                         child: ListTile(
                           leading: CircleAvatar(
@@ -84,6 +95,7 @@ class _Invoice_listState extends State<Invoice_list> {
     } else {
       setState(() {
         getInv = jsonDecode(response.body)['invoice'];
+        print(getInv);
         isLoading = false;
       });
 
@@ -98,9 +110,7 @@ class _Invoice_listState extends State<Invoice_list> {
     var userID = tokenData['data'][0]['id'].toString();
     var encode = jsonEncode({"token": token});
     var headers = {'Content-Type': 'application/json'};
-    print("http://10.0.2.2:5003/api/v1/invoice/user/" +
-        userID +
-        "/?limit=10&page=1");
+
     return http.post(
       Uri.parse("http://10.0.2.2:5003/api/v1/invoice/user/" +
           userID +
@@ -109,4 +119,12 @@ class _Invoice_listState extends State<Invoice_list> {
       body: encode,
     );
   }
+}
+
+void _shoInvoice(BuildContext context, id) {
+  final route = MaterialPageRoute<Null>(builder: (BuildContext context) {
+    // print();
+    return new Home();
+  });
+  Navigator.of(context).push(route);
 }
